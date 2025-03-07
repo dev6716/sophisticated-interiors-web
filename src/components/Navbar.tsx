@@ -39,7 +39,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="KS Design Logo" className="h-10" />
+            <img 
+              src="/lovable-uploads/bcc4cf11-3dea-4606-ba58-ffd3041fc226.png" 
+              alt="KS Design Logo" 
+              className="h-12" 
+            />
           </Link>
           
           {/* Desktop Menu */}

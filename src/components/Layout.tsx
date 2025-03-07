@@ -18,7 +18,7 @@ const Layout = ({ children, className = "" }: LayoutProps) => {
   }, [location.pathname]);
 
   return (
-    <div className={`flex flex-col min-h-screen ${className}`}>
+    <div className={`flex flex-col min-h-screen w-full ${className}`}>
       <Navbar />
       <main className="flex-grow w-full">
         {children}
