@@ -120,19 +120,19 @@ const Services = () => {
             {process.map((step, index) => (
               <div 
                 key={index} 
-                className="bg-white p-8 md:p-10 relative overflow-hidden group"
+                className="bg-white p-8 md:p-10 flex relative overflow-hidden group"
               >
-                <div className="absolute -right-10 top-10 text-8xl font-bold text-ks-yellow opacity-10 group-hover:opacity-20 transition-opacity">
-                  {step.number}
+                <div className="absolute right-0 top-0 text-[180px] font-bold text-ks-yellow opacity-10 leading-none">
+                  {index + 1}
+                </div>
+                <div className="w-20 h-20 flex-shrink-0">
+                  <div className="w-16 h-16 rounded-full bg-ks-yellow text-ks-darkGray flex items-center justify-center font-bold text-xl">
+                    {step.number}
+                  </div>
                 </div>
                 <div className="relative z-10">
-                  <div className="flex items-center mb-4">
-                    <span className="w-10 h-10 rounded-full bg-ks-yellow text-ks-darkGray flex items-center justify-center font-bold mr-4">
-                      {step.number}
-                    </span>
-                    <h3 className="font-serif text-xl md:text-2xl font-medium">{step.title}</h3>
-                  </div>
-                  <p className="text-muted-foreground pl-14">{step.description}</p>
+                  <h3 className="font-serif text-2xl font-medium mb-3">{step.title}</h3>
+                  <p className="text-muted-foreground">{step.description}</p>
                 </div>
               </div>
             ))}

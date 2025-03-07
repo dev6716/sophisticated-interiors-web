@@ -8,7 +8,9 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
-            <img src="/logo.png" alt="KS Design Logo" className="h-10 mb-6" />
+            <Link to="/">
+              <img src="/lovable-uploads/5684c5ab-edd7-4b4a-9107-f1ee5666b4b4.png" alt="KS Design Logo" className="h-12 mb-6" />
+            </Link>
             <p className="mb-6 text-sm leading-relaxed">
               Transforming spaces into captivating environments that reflect unique styles.
             </p>

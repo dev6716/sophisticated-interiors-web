@@ -21,7 +21,7 @@ const Hero = ({
 }: HeroProps) => {
   return (
     <div 
-      className="hero-image relative h-[70vh] md:h-[80vh] flex items-center" 
+      className="hero-image relative h-[90vh] flex items-center" 
       style={{ 
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, ${isHomepage ? '0.6' : '0.4'})), url(${image})` 
       }}
