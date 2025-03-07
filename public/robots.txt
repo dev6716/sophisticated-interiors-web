@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /images/
+Disallow: /*.png$
+Disallow: /*.jpg$
+Disallow: /*.jpeg$
+Disallow: /*.gif$
+Disallow: /*.webp$
+
+User-agent: Twitterbot
+Disallow: /
+
+User-agent: facebookexternalhit
+Disallow: / 
