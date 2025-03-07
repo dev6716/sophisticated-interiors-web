@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import Hero from "@/components/Hero";
 import SectionTitle from "@/components/SectionTitle";
@@ -88,7 +87,6 @@ const Index = () => {
         isHomepage={true}
       />
       
-      {/* About Section */}
       <section className="section-padding">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -119,7 +117,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Projects Section */}
       <section className="section-padding bg-ks-lightGray">
         <div className="container mx-auto px-4">
           <SectionTitle
@@ -149,7 +146,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Services Section */}
       <section className="section-padding">
         <div className="container mx-auto px-4">
           <SectionTitle
@@ -158,7 +154,7 @@ const Index = () => {
           />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.slice(0, 3).map((service, index) => (
+            {services.map((service, index) => (
               <ServiceCard
                 key={index}
                 title={service.title}
@@ -178,7 +174,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Testimonials Section */}
       <section className="section-padding bg-ks-lightGray">
         <div className="container mx-auto px-4">
           <SectionTitle
@@ -199,7 +194,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* CTA Section */}
       <section className="py-20 relative">
         <div
           className="absolute inset-0 z-0"
