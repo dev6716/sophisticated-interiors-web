@@ -9,11 +9,11 @@ interface LayoutProps {
   fullWidth?: boolean;
 }
 
-const Layout = ({ children, className = "", fullWidth = false }: LayoutProps) => {
+const Layout = ({ children, className = "", fullWidth = true }: LayoutProps) => {
   return (
     <div className={`flex flex-col min-h-screen ${className}`}>
       <Navbar />
-      <main className={`flex-grow ${fullWidth ? '' : 'container mx-auto px-4'}`}>
+      <main className={`flex-grow ${fullWidth ? 'w-full' : 'container mx-auto px-4'}`}>
         {children}
       </main>
       <Footer />

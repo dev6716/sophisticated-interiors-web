@@ -1,9 +1,76 @@
 
+import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 import Hero from "@/components/Hero";
 import SectionTitle from "@/components/SectionTitle";
 
+interface InstagramPost {
+  id: string;
+  media_url: string;
+  permalink: string;
+  caption?: string;
+  timestamp: string;
+}
+
 const About = () => {
+  const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // For demonstration, we'll use placeholder images since we can't access the Instagram API directly
+  useEffect(() => {
+    // Mocked Instagram posts
+    const mockInstagramPosts = [
+      {
+        id: "1",
+        media_url: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=400",
+        permalink: "https://www.instagram.com/p/somepost1/",
+        caption: "Beautiful living room design with natural light #interiordesign #homedecor",
+        timestamp: "2023-10-15T10:00:00Z"
+      },
+      {
+        id: "2",
+        media_url: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=400",
+        permalink: "https://www.instagram.com/p/somepost2/",
+        caption: "Minimalist kitchen design #kitchendesign #minimal",
+        timestamp: "2023-10-10T09:30:00Z"
+      },
+      {
+        id: "3",
+        media_url: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=400",
+        permalink: "https://www.instagram.com/p/somepost3/",
+        caption: "Cozy bedroom makeover #bedroom #cozyhome",
+        timestamp: "2023-10-05T14:20:00Z"
+      },
+      {
+        id: "4",
+        media_url: "https://images.unsplash.com/photo-1648294813487-c3a14b329abc?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=400",
+        permalink: "https://www.instagram.com/p/somepost4/",
+        caption: "Modern office space design #officedesign #workspace",
+        timestamp: "2023-09-28T11:15:00Z"
+      },
+      {
+        id: "5",
+        media_url: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=400",
+        permalink: "https://www.instagram.com/p/somepost5/",
+        caption: "Bathroom renovation complete! #bathroomdesign #renovation",
+        timestamp: "2023-09-20T08:45:00Z"
+      },
+      {
+        id: "6",
+        media_url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=400",
+        permalink: "https://www.instagram.com/p/somepost6/",
+        caption: "Elegant dining room setup #diningroom #interiordesign",
+        timestamp: "2023-09-15T16:30:00Z"
+      }
+    ];
+
+    // Simulate loading from API
+    setTimeout(() => {
+      setInstagramPosts(mockInstagramPosts);
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <Layout>
       <Hero
@@ -86,8 +153,62 @@ const About = () => {
         </div>
       </section>
       
-      {/* Our Team */}
+      {/* Instagram Feed Section */}
       <section className="section-padding">
+        <div className="container mx-auto px-4">
+          <SectionTitle 
+            title="Follow Us on Instagram"
+            subtitle="Get inspired by our latest projects and design ideas"
+            centered={true}
+          />
+          
+          {loading ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-ks-yellow"></div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {instagramPosts.map((post) => (
+                <a 
+                  href="https://www.instagram.com/ksdesign_ahmedabad/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  key={post.id} 
+                  className="group overflow-hidden rounded-lg relative"
+                >
+                  <img 
+                    src={post.media_url} 
+                    alt="Instagram post" 
+                    className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-center p-3">
+                      <span className="text-xs line-clamp-3">{post.caption}</span>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          )}
+          
+          <div className="text-center mt-8">
+            <a 
+              href="https://www.instagram.com/ksdesign_ahmedabad/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-ks-yellow text-ks-darkGray font-medium rounded hover:bg-opacity-90 transition-colors"
+            >
+              View Our Instagram Feed
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      {/* Our Team */}
+      <section className="section-padding bg-ks-lightGray">
         <div className="container mx-auto px-4">
           <SectionTitle 
             title="Meet Our Team"
@@ -135,7 +256,7 @@ const About = () => {
       </section>
       
       {/* Our Process */}
-      <section className="section-padding bg-ks-lightGray">
+      <section className="section-padding">
         <div className="container mx-auto px-4">
           <SectionTitle 
             title="Our Design Process"
@@ -143,7 +264,7 @@ const About = () => {
           />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-8 text-center">
+            <div className="bg-white p-8 text-center shadow-sm hover:shadow-md transition-shadow">
               <div className="w-16 h-16 rounded-full bg-ks-yellow text-ks-darkGray flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
                 1
               </div>
@@ -151,7 +272,7 @@ const About = () => {
               <p className="text-muted-foreground">We begin by understanding your needs, preferences, and vision through in-depth consultations.</p>
             </div>
             
-            <div className="bg-white p-8 text-center">
+            <div className="bg-white p-8 text-center shadow-sm hover:shadow-md transition-shadow">
               <div className="w-16 h-16 rounded-full bg-ks-yellow text-ks-darkGray flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
                 2
               </div>
@@ -159,7 +280,7 @@ const About = () => {
               <p className="text-muted-foreground">We create detailed design concepts that align with your vision and address spatial challenges.</p>
             </div>
             
-            <div className="bg-white p-8 text-center">
+            <div className="bg-white p-8 text-center shadow-sm hover:shadow-md transition-shadow">
               <div className="w-16 h-16 rounded-full bg-ks-yellow text-ks-darkGray flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
                 3
               </div>
@@ -167,7 +288,7 @@ const About = () => {
               <p className="text-muted-foreground">We refine the selected concept based on your feedback, finalizing all design elements.</p>
             </div>
             
-            <div className="bg-white p-8 text-center">
+            <div className="bg-white p-8 text-center shadow-sm hover:shadow-md transition-shadow">
               <div className="w-16 h-16 rounded-full bg-ks-yellow text-ks-darkGray flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
                 4
               </div>
